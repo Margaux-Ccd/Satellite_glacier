@@ -1,0 +1,84 @@
+= Sentinel 2 Download
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+:sectlinks:
+:sectnums:
+
+== Introduction
+
+This document provides an overview of the Python code to download sentinel 2 imagery.
+
+== Python Code
+
+It uses sentinel2tools library.
+First you have to create an account on Sentinel Hub. 
+
+[source,python]
+----
+from sentinel2tools import Sentinel2Downloader
+
+# Define your area of interest (AOI) in GeoJSON format
+aoi = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [longitude1, latitude1],
+                        [longitude2, latitude2],
+                        [longitude3, latitude3],
+                        [longitude4, latitude4],
+                        [longitude1, latitude1]
+                    ]
+                ]
+            }
+        }
+    ]
+}
+
+# Initialize the downloader
+downloader = Sentinel2Downloader(aoi, date_range=('2023-01-01', '2023-12-31'), max_cloud_cover=20)
+
+# Download the images
+downloader.download_images()
+
+----
+== Additional tips
+
+Sentinel Hub EO Browser: You can use the EO Browser to visually inspect and select the specific Sentinel-2 images you need before downloading them programmatically.
+
+Data Processing: Consider using libraries like rasterio or geopandas for further processing and analysis of the downloaded satellite imagery
+
+== Schematics
+
+The following schematic illustrates the architecture or flow of the system.
+
+[plantuml, diagram-classes, png]
+----
+@startuml
+class Greeter {
+  +greet(name: String): String
+}
+
+Greeter -> "String": greet
+@enduml
+----
+
+== Usage
+
+To use the Python code, follow these steps:
+
+1. Ensure you have Python installed on your system.
+2. Save the Python code in a file named `greet.py`.
+3. Run the script using the command: `python greet.py`.
+
+== Conclusion
+
+This documentation provides a basic template for documenting Python code and including schematics using PlantUML.
