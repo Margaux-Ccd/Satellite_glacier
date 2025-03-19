@@ -19,7 +19,7 @@ api = SentinelAPI(USERNAME, PASSWORD, "https://apihub.copernicus.eu/apihub")
 # Draw the polygon on geojson.io or QGIS, or download it with Opendataswisstopo
 
 # Load AOI from a geojson file
-path="./polygon/polygon.geojson" #your path to the geojson file
+path="./draft/polygon/polygon.geojson" #your path to the geojson file
 aoi = gpd.read_file(path)
 aoi_wkt = geojson_to_wkt(aoi.__geo_interface__)
 
