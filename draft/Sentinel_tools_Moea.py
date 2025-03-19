@@ -107,6 +107,13 @@
 # else :
 #     print('no data found')
 
+# Suggestions:
+# - choisir la résolution
+# - utiliser le tile type
+# - choisir la date
+# - pas télécharger toutes les infos qui servent à rien
+#- raccourcir le nom du téléchargement
+
 from datetime import date, timedelta
 import requests
 import pandas as pd
@@ -128,8 +135,8 @@ def main():
     #     config = json.load(file)
 
     # Access the variables
-    username = input('Enter your copernicus eu username:')
-    password = input('Enter your copernicus eu password:')
+    username = input('Enter your email adress (=copernicus username):')
+    password = input('Enter your copernicus password:')
 
     # Open and read the GeoJSON file
     polygon_path=input('Enter your polygon path (the file must be a .geojson):')
