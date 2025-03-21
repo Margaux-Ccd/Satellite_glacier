@@ -107,6 +107,13 @@
 # else :
 #     print('no data found')
 
+# Suggestions:
+# - choisir la résolution (10m, 20m, 60m)
+# - utiliser le tile type
+# - choisir les 2 dates à télécharger
+# - pas télécharger toutes les infos qui servent à rien
+#- raccourcir le nom du téléchargement
+
 from datetime import date, timedelta
 import requests
 import pandas as pd
@@ -123,16 +130,20 @@ def main():
     # Ask for the type of tiles
     tile_type = input("Please enter the type of tiles (e.g., RGB, NIR): ")
 
-    # Open and read the JSON file
-    with open('draft/configSentinel.json', 'r') as file:
-        config = json.load(file)
+    # # Open and read the JSON file
+    # with open('draft/configSentinel.json', 'r') as file:
+    #     config = json.load(file)
 
     # Access the variables
-    password = config['password']
-    username = config['username']
+    # password = config['password']
+    # username = config['username']
+    username = input('Enter your email adress (=copernicus username):')
+    password = input('Enter your copernicus password:')
 
     # Open and read the GeoJSON file
-    with open('draft/polygon/Aletsch.geojson', 'r') as file:
+    polygon_path=input('Enter your polygon path (the file must be a .geojson):')
+    #polygon_path='draft/polygon/Aletsch.geojson'
+    with open(polygon_path, 'r') as file:
         geojson_data = geojson.load(file)
 
     # Extract the polygon from the GeoJSON data
