@@ -13,41 +13,12 @@ This document provides an overview of the Python code to download sentinel 2 ima
 
 == Python Code
 
-It uses sentinel2tools library.
+
 First you have to create an account on Sentinel Hub. 
+The code iis inspired from https://medium.com/rotten-grapes/download-sentinel-data-using-python-from-copernicus-9ec0a789e470 . A filtering step has been added in order to use only bands that are interest.
 
 [source,python]
 ----
-from sentinel2tools import Sentinel2Downloader
-
-# Define your area of interest (AOI) in GeoJSON format
-aoi = {
-    "type": "FeatureCollection",
-    "features": [
-        {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [longitude1, latitude1],
-                        [longitude2, latitude2],
-                        [longitude3, latitude3],
-                        [longitude4, latitude4],
-                        [longitude1, latitude1]
-                    ]
-                ]
-            }
-        }
-    ]
-}
-
-# Initialize the downloader
-downloader = Sentinel2Downloader(aoi, date_range=('2023-01-01', '2023-12-31'), max_cloud_cover=20)
-
-# Download the images
-downloader.download_images()
 
 ----
 == Additional tips
@@ -56,9 +27,17 @@ Sentinel Hub EO Browser: You can use the EO Browser to visually inspect and sele
 
 Data Processing: Consider using libraries like rasterio or geopandas for further processing and analysis of the downloaded satellite imagery
 
-== Schematics
+== About Sentinel 2
+https://en.wikipedia.org/wiki/Sentinel-2
+https://sentiwiki.copernicus.eu/web/sentinel-2
+- 10 m: containing spectral bands 2, 3, 4 , 8, a True Colour Image (TCI) and an AOT and WVP maps resampled from 20 m.
 
-The following schematic illustrates the architecture or flow of the system.
+- 20 m: containing spectral bands 1 - 7, the bands 8A, 11 and 12, a True Colour Image (TCI), a Scene Classification (SCL) map and an AOT and WVP maps. The band B8 is omitted as B8A provides more precise spectral information.
+
+- 60 m: containing all the spectral bands provided in the 20 m folder, plus the band 9, a True Colour Image (TCI), a Scene Classification (SCL) map and an AOT and WVP maps. The cirrus band 10 is omitted, as it does not contain surface information.
+== Sentinel output file architecture
+
+The following schematic illustrates the architecture of the sentinel 2 files .
 
 [plantuml, diagram-classes, png]
 ----
@@ -81,4 +60,4 @@ To use the Python code, follow these steps:
 
 == Conclusion
 
-This documentation provides a basic template for documenting Python code and including schematics using PlantUML.
+This repository should help you search and download satellite imagery.

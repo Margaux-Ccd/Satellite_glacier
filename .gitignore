@@ -2,3 +2,6 @@ env_sentinel #ignore l'environnement pour pas qu'il apparaisse chez Margaux quan
 .venv
 configLandsat.json
 configSentinel.json
+.zip
+__pycache__
+data
