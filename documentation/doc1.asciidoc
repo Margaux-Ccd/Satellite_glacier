@@ -42,11 +42,14 @@ The following schematic illustrates the architecture of the sentinel 2 files .
 [plantuml, diagram-classes, png]
 ----
 @startuml
-class Greeter {
-  +greet(name: String): String
-}
+S2A_MSIL2A_20250321T102731_N0511_R108_T32TMS_20250321T142017.SAFE/
+│── GRANULE/
+│   ├── L2A_T32TMS_A026456_20250321T102731/
+│   │   ├── IMG_DATA/
+│   │   │   ├── R10m/  <-- ✅ Only exists for 10m bands
+│   │   │   ├── R20m/
+│   │   │   ├── R60m/
 
-Greeter -> "String": greet
 @enduml
 ----
 
