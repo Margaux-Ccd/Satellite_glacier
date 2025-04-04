@@ -1,4 +1,4 @@
-= Sentinel 2 Download
+= Satellite imagery Download
 :doctype: book
 :icons: font
 :source-highlighter: highlightjs
@@ -9,27 +9,29 @@
 
 == Introduction
 
-This document provides an overview of the Python code to download sentinel 2 imagery.
-
-== Python Code
-
-
-First you have to create an account on Sentinel Hub. 
-The code iis inspired from https://medium.com/rotten-grapes/download-sentinel-data-using-python-from-copernicus-9ec0a789e470 . A filtering step has been added in order to use only bands that are interest.
-
-[source,python]
-----
+This document provides an overview of the Python code to download satellite imagery.
 
 ----
-== Additional tips
+@startuml
+left to right direction
+actor "Satellite data user" as fc
+rectangle Datasets {
+  usecase "Sentinel" as UC1
+  usecase "Landsat" as UC2
+  usecase "DEM" as UC3
+}
+fc --> UC1
+fc --> UC2
+fc --> UC3
+@enduml
+----
 
-Sentinel Hub EO Browser: You can use the EO Browser to visually inspect and select the specific Sentinel-2 images you need before downloading them programmatically.
-
-Data Processing: Consider using libraries like rasterio or geopandas for further processing and analysis of the downloaded satellite imagery
 
 == About Sentinel 2
 https://en.wikipedia.org/wiki/Sentinel-2
 https://sentiwiki.copernicus.eu/web/sentinel-2
+
+image::Landsat.v.Sentinel-2-1.png[]
 - 10 m: containing spectral bands 2, 3, 4 , 8, a True Colour Image (TCI) and an AOT and WVP maps resampled from 20 m.
 
 - 20 m: containing spectral bands 1 - 7, the bands 8A, 11 and 12, a True Colour Image (TCI), a Scene Classification (SCL) map and an AOT and WVP maps. The band B8 is omitted as B8A provides more precise spectral information.
@@ -41,16 +43,16 @@ The following schematic illustrates the architecture of the sentinel 2 files .
 
 [plantuml, diagram-classes, png]
 ----
-@startuml
+
 S2A_MSIL2A_20250321T102731_N0511_R108_T32TMS_20250321T142017.SAFE/
 │── GRANULE/
 │   ├── L2A_T32TMS_A026456_20250321T102731/
 │   │   ├── IMG_DATA/
-│   │   │   ├── R10m/  <-- ✅ Only exists for 10m bands
+│   │   │   ├── R10m/  
 │   │   │   ├── R20m/
 │   │   │   ├── R60m/
 
-@enduml
+
 ----
 
 == Usage
@@ -58,8 +60,19 @@ S2A_MSIL2A_20250321T102731_N0511_R108_T32TMS_20250321T142017.SAFE/
 To use the Python code, follow these steps:
 
 1. Ensure you have Python installed on your system.
-2. Save the Python code in a file named `greet.py`.
-3. Run the script using the command: `python greet.py`.
+2. In your terminal, run:
+If you work in a .venv environment:
+[source,python]
+----
+pip install requirements.txt
+----
+If you work with a conda environment:
+
+[source,python]
+----
+conda install --yes --file requirements.txt
+----
+3. Go in Script/Sentinel_EE.ipynb and follow the indications.
 
 == Conclusion
 
