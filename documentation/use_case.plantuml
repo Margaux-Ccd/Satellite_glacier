@@ -1,0 +1,11 @@
+
+@startuml use_case
+left to right direction
+actor "Satellite data user" as fc
+rectangle Datasets {
+  usecase "Landsat" as UC2
+  usecase "Sentinel" as UC3
+}
+fc --> UC2
+fc --> UC3
+@enduml
