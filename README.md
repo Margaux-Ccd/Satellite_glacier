@@ -11,18 +11,7 @@
 
 This document provides an overview of the Python code to download satellite imagery. It is based on the Google Earth Engine Python API. It primary use is for glacier study over the years.
 
-```plantuml
-@startuml use_case
-left to right direction
-actor "Satellite data user" as fc
-rectangle Datasets {
-  usecase "Landsat" as UC2
-  usecase "Sentinel" as UC3
-}
-fc --> UC2
-fc --> UC3
-@enduml
-```
+![Use case](documentation\use_case.png?raw=true "Use case")
 
 ## About Sentinel 2
 
@@ -56,9 +45,13 @@ S2A_MSIL2A_20250321T102731_N0511_R108_T32TMS_20250321T142017.SAFE/
 ## Usage
 
 To use the Python code, follow these steps:
+1. **Clone this repository**
 
-1. **Ensure you have Python installed on your system.**
-2. **In your terminal, run one of the following depending on your environment:**
+If you are using VSCode, copy the link of the repository. Then open a new window where you want to add this project folder in VSCode. Click on "Clone repository" and paste the link.
+
+2. **Ensure you have Python installed on your system.**
+
+3. **In your terminal, run one of the following depending on your environment:**
    - If using a virtual environment:
      ```sh
      pip install -r requirements.txt
@@ -67,10 +60,9 @@ To use the Python code, follow these steps:
      ```sh
      conda install --yes --file requirements.txt
      ```
-3. **Open `Script/Sentinel_EE.ipynb` and follow the instructions.**
+4. **Open `Script/Sentinel_EE.ipynb` or `Script/Sentinel_EE_weekly.ipynb` depending on your search timescale and follow the instructions.**
 
-## Conclusion
+Here is a schematic about the process cell by cell:
+![GEE_steps](documentation\GEE_code_steps.png?raw=true "Steps of imagery download code")
 
-This repository should help you search and download satellite imagery.
-
-*Last updated: 2025-04-07 09:47:08 +0200*
+*Last updated: 2025-05-11 09:47:08 +0200*

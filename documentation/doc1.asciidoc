@@ -42,12 +42,17 @@ S2A_MSIL2A_20250321T102731_N0511_R108_T32TMS_20250321T142017.SAFE/
 - **10 m**: contains spectral bands 2, 3, 4, 8, a True Colour Image (TCI), and AOT and WVP maps resampled from 20 m.
 - **20 m**: contains spectral bands 1–7, bands 8A, 11, 12, a TCI, a Scene Classification (SCL) map, and AOT/WVP maps. Band 8 is omitted in favor of 8A for spectral precision.
 - **60 m**: contains all the spectral bands in the 20 m folder, plus band 9, TCI, SCL map, and AOT/WVP maps. Cirrus band 10 is omitted (no surface info).
+
 == Usage
 
 To use the Python code, follow these steps:
 
-=== 1. Ensure you have Python installed on your system.
-=== 2. In your terminal, run one of the following depending on your environment:
+=== Clone this GitHub repository
+If you are using VSCode, copy the link of the repository. Then open a new window where you want to add this project folder in VSCode. Click on "Clone repository" and paste the link.
+
+=== Ensure you have Python installed on your system.
+
+=== In your terminal, run one of the following depending on your environment:
 
 If using a virtual environment:
 [source, shell]
@@ -61,9 +66,13 @@ If using a Conda environment:
 conda install --yes --file requirements.txt
 ----
 
-=== 3. Open `Script/Sentinel_EE.ipynb` and follow the instructions.
+=== Open `Script/Sentinel_EE.ipynb` or `Script/Sentinel_EE_weekly.ipynb` and follow the instructions.
 
-== Conclusion
+Here is a schematic about the process cell by cell:
 
-This repository should help you search and download satellite imagery.
+[plantuml, GEE_script, svg]
+....
+include::GEE_code_steps.plantuml[]
+....
+
 

@@ -1,0 +1,31 @@
+@startuml API_schematic
+title Google Earth Engine (GEE) Python API - Conceptual Overview
+
+actor "User" as user
+
+rectangle "Python Script\n(GEE Client Library)" as script {
+  [ee.Initialize()]
+  [ee.ImageCollection()]
+  [Export]
+  [Visualization (eeMap)]
+}
+
+rectangle "Google Earth Engine API" as api {
+  [Authentication]
+  [RESTful API Endpoints]
+}
+
+database "Google Earth Engine\nData Catalogs" as db
+
+user --> script : Runs script
+
+script --> api : Sends API requests\n(e.g., access ImageCollection)
+api --> db : **Query** on datasets\n(e.g., Landsat, Sentinel, MODIS)
+db --> api : Return data/results
+api --> script : Return structured response\n(e.g., JSON, metadata)
+script --> user : Render map, export data,\nprocess results
+
+
+
+@enduml
+
